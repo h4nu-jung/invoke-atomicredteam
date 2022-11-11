@@ -36,7 +36,7 @@ function Install-AtomicRedTeam {
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory = $False, Position = 0)]
-        [string]$InstallPath = $( if ($IsLinux -or $IsMacOS) { $Env:HOME + "/AtomicRedTeam" } else { "c:\round5test" }),
+        [string]$InstallPath = $( if ($IsLinux -or $IsMacOS) { $Env:HOME + "/round5test" } else { "c:\round5test" }),
 
         [Parameter(Mandatory = $False, Position = 1)]
         [string]$DownloadPath = $InstallPath,
@@ -109,6 +109,7 @@ function Install-AtomicRedTeam {
                 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$RepoOwner/atomic-red-team/round5test/round5test/Round5TestStep_pause.ps1" -OutFile "$DownloadPath\Round5TestStep_pause.ps1"
                 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$RepoOwner/atomic-red-team/round5test/round5test/Round5TestStep_privilege.ps1" -OutFile "$DownloadPath\Round5TestStep_privilege.ps1"
                 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$RepoOwner/atomic-red-team/round5test/round5test/Round5TestStep_privilege_pause.ps1" -OutFile "$DownloadPath\Round5TestStep_privilege_pause.ps1"                
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$RepoOwner/atomic-red-team/round5test/round5test/Round5TestStep(linux).ps1" -OutFile "$DownloadPath/Round5TestStep(linux).ps1"
             }
 
             Write-Host "Installation of Invoke-AtomicRedTeam is complete. You can now use the Invoke-AtomicTest function" -Fore Yellow
